@@ -1,0 +1,62 @@
+<header class="site-header">
+  <div class="site-identity">
+    <h1><a href="#">Employee Management</a></h1>
+  </div>
+  <nav class="site-navigation">
+    <ul class="nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">LogOut</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>Add Employes</h1>
+  <form #empFormDirective="ngForm" (ngSubmit)="add(empFormDirective)">
+    <div class="user_details">
+      <div class="input_box">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Enter your name" name="name" [(ngModel)]="empForm.name" required>
+      </div>
+      <div class="input_box">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" name="email" [(ngModel)]="empForm.email" required>
+      </div>
+      <div class="input_box">
+        <label for="phone">Phone Number</label>
+        <input type="number" id="phone" placeholder="Enter your number" name="phone" [(ngModel)]="empForm.phone"
+          required>
+      </div>
+      <div class="input_box">
+        <label for="address">Address</label>
+        <input type="text" id="address" placeholder="Enter your Address" name="address" [(ngModel)]="empForm.address"
+          required>
+      </div>
+      <!-- Hidden field for Sno -->
+      <input type="hidden" name="sno" [(ngModel)]="empForm.sNo">
+    </div>
+    <div class="reg_btn">
+      <input type="submit" [disabled]="empFormDirective.invalid" value="{{btnName}}">
+    </div>
+  </form>
+
+</div>
+
+<div class="table-container">
+  <table style="border: 5px;">
+    <tr>
+      <th *ngFor="let col of columns; let i = index">{{col}}</th>
+    </tr>
+    <tr *ngFor="let item of data let i = index">
+      <td>{{i+1}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.email}}</td>
+      <td>{{item.phone}}</td>
+      <td>{{item.address}}</td>
+      <td><button class="btn edit" (click)="edit(item)">Edit</button>
+        <button class="btn delete" (click)="delete(i)">Delete</button>
+      </td>
+    </tr>
+  </table>
+
+</div>

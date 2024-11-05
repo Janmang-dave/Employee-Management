@@ -1,0 +1,25 @@
+<div class="site-identity">
+  <h1><a href="#">Employee Management System</a></h1>
+</div>
+
+<div class="container body">
+  <div class="row">
+    <div class="col-md-12">
+    </div>
+  </div>
+  <form #loginForm class="login" (ngSubmit)="signIn(loginForm)">
+    <h2>Welcome, User!</h2>
+    <p>Please log in</p>
+    <input type="text" id="username" placeholder="User Name" [(ngModel)]="loginForm.username" />
+    <input type="password" id="password" placeholder="Password" [(ngModel)]="loginForm.password" />
+    <!-- <input type="submit" value="Log In" /> -->
+    <input type="submit" value="Log In" />
+
+    <div class="links">
+      <a href="#">Forgot password</a>
+      <a routerLink="reg" (click)="register()">Register</a>
+    </div>
+  </form>
+
+
+</div>
